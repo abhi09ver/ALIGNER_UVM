@@ -1,17 +1,37 @@
 # ALIGNER_UVM
 
-UVM verification environment for the CFS Aligner design.
+UVM verification environment for the CFS Aligner (APB-configured, RX → align → TX).
 
-## Version 1
-- **RTL**: `design.sv` includes the aligner (`cfs_aligner.v`, `cfs_aligner_core.v`) and submodules (ctrl, rx/tx ctrl, regs, synch FIFO, edge detect).
-- **APB agent (in progress)**: interface, types, agent config, and agent; the driver, monitor, sequencer, sequences, and coverage are still placeholders.
-- **Env / tests**: `cfs_algn_env`, `cfs_algn_test_base`, `cfs_algn_test_reg_access`.
-- `testbench.sv` is the top module.
+## Directory structure
+```
+design/                 RTL (design.sv includes all .v files)
+tb/
+  top/                  testbench.sv – top module, interfaces, DUT instance
+  agents/
+    apb/                APB agent (config, register access)
+    rx/                 RX agent  – planned
+    tx/                 TX agent  – planned
+  env/                  cfs_algn_pkg.sv, cfs_algn_env.sv
+    ral/                Register model + APB adapter – planned
+    scoreboard/         Scoreboard – planned
+    model/              Reference model for checking – planned
+    coverage/           Functional coverage – planned
+  test/                 Test package, base test, tests
+sim/                    run.sh, files.f (incdirs + sources), dump.tcl, logs
+```
 
 ## Run (Cadence Xcelium)
 ```
-xrun -Q -unbuffered -timescale 1ns/1ns -sysv -access +rw \
-  +UVM_TESTNAME=cfs_algn_test_reg_access -uvmnocdnsextra \
-  -uvmhome $UVM_HOME $UVM_HOME/src/uvm_macros.svh design.sv testbench.sv
+cd sim
+./run.sh                          # default: cfs_algn_test_reg_access
+./run.sh <test_name>
 ```
-`xrun.log` holds the log from the last run (UVM_ERROR: 0, UVM_FATAL: 0).
+`files.f` adds every folder as `+incdir`, so `` `include "file.sv" `` works with bare file names.
+When you add a new folder, add its `+incdir` line to `files.f`.
+
+## Status (v1)
+- [x] RTL, APB interface/types/config/agent, env, base test, reg_access test (passes: see `sim/xrun.log`)
+- [ ] APB driver, monitor, sequencer, sequences, coverage, reset handler
+- [ ] RX / TX agents
+- [ ] RAL model
+- [ ] Reference model + scoreboard
