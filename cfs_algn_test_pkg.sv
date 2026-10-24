@@ -1,0 +1,21 @@
+`ifndef CFS_ALGN_TEST_PKG_SV
+  `define CFS_ALGN_TEST_PKG_SV
+
+//should include cfs_algn pkg here
+
+  `include "cfs_algn_pkg.sv" 
+
+package cfs_algn_test_pkg;
+   import uvm_pkg::*;
+   import cfs_algn_pkg::*;
+   import cfs_apb_pkg::*;
+       
+   //    `include "uvm_macros.svh"
+    `include "cfs_algn_test_base.sv"
+    `include "cfs_algn_test_reg_access.sv"
+                 
+endpackage 
+
+`endif
+
+//Test pkg --- include and  import algn_pkg and import uvm_pkg

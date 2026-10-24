@@ -1,0 +1,114 @@
+xrun: 25.03-s001: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xrun	25.03-s001: Started on Oct 24, 2026 at 17:26:31 EDT
+xrun
+	-Q
+	-unbuffered
+	-timescale 1ns/1ns
+	-sysv
+	-access +rw
+	+UVM_TESTNAME=cfs_algn_test_reg_access
+	-uvmnocdnsextra
+	-uvmhome /xcelium25.03/tools//methodology/UVM/CDNS-1.2/sv
+	/xcelium25.03/tools//methodology/UVM/CDNS-1.2/sv/src/uvm_macros.svh
+	design.sv
+	testbench.sv
+	`include "cfs_apb_types.sv";
+	                          |
+xmvlog: *W,NOINUF (cfs_apb_pkg.sv,11|27): `include directive not isolated on its own line [16.5(IEEE)].
+	`include "cfs_apb_types.sv";
+	                           |
+xmvlog: *W,UEXPSC (cfs_apb_pkg.sv,11|28): Ignored unexpected semicolon following SystemVerilog description keyword (endif).
+	`include "cfs_apb_agent_config.sv";
+	                                 |
+xmvlog: *W,NOINUF (cfs_apb_pkg.sv,12|34): `include directive not isolated on its own line [16.5(IEEE)].
+	`include "cfs_apb_agent_config.sv";
+	                                  |
+xmvlog: *W,UEXPSC (cfs_apb_pkg.sv,12|35): Ignored unexpected semicolon following SystemVerilog description keyword (endif).
+	`include "cfs_apb_agent.sv";
+	                          |
+xmvlog: *W,NOINUF (cfs_apb_pkg.sv,13|27): `include directive not isolated on its own line [16.5(IEEE)].
+	`include "cfs_apb_agent.sv";
+	                           |
+xmvlog: *W,UEXPSC (cfs_apb_pkg.sv,13|28): Ignored unexpected semicolon following SystemVerilog description keyword (endif).
+package cfs_algn_test_pkg;
+                        |
+xmvlog: *W,TSNSPK (cfs_algn_test_pkg.sv,8|24): `timescale is not specified for the package.  The default timescale of 1ns/1ns will be assumed for this package.
+  cfs_aligner dut(
+                |
+xmelab: *W,CUVWSP (./testbench.sv,12|16): 7 output ports were not connected:
+xmelab: (./cfs_aligner.v,34): md_rx_ready
+xmelab: (./cfs_aligner.v,35): md_rx_err
+xmelab: (./cfs_aligner.v,37): md_tx_valid
+xmelab: (./cfs_aligner.v,38): md_tx_data
+xmelab: (./cfs_aligner.v,39): md_tx_offset
+xmelab: (./cfs_aligner.v,40): md_tx_size
+xmelab: (./cfs_aligner.v,44): irq
+
+  cfs_aligner dut(
+                |
+xmelab: *W,CUVWSI (./testbench.sv,12|16): 6 input ports were not connected:
+xmelab: (./cfs_aligner.v,30): md_rx_valid
+xmelab: (./cfs_aligner.v,31): md_rx_data
+xmelab: (./cfs_aligner.v,32): md_rx_offset
+xmelab: (./cfs_aligner.v,33): md_rx_size
+xmelab: (./cfs_aligner.v,41): md_tx_ready
+xmelab: (./cfs_aligner.v,42): md_tx_err
+
+	Top level design units:
+		uvm_pkg
+		cfs_apb_pkg
+		cfs_algn_pkg
+		cfs_algn_test_pkg
+		testbench
+Loading snapshot worklib.testbench:sv .................... Done
+SVSEED default: 1
+xcelium> source /xcelium25.03/tools/xcelium/files/xmsimrc
+xcelium> source /xcelium25.03/tools//methodology/UVM/CDNS-1.2/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (25.03-s001)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+xmsim: *W,PRPASZ: Packed array at "worklib.uvm_pkg::uvm_string_to_bits.uvm_string_to_bits" of 115200 bits exceeds limit of 4096 - not probed
+ Use 'probe -create -packed 115200 worklib.uvm_pkg::uvm_string_to_bits.uvm_string_to_bits' or 'setenv SHM_PACKED_LIMIT 115200' to adjust limit.
+xmsim: *W,PRPASZ: Packed array at "worklib.uvm_pkg::uvm_bits_to_string.str" of 115200 bits exceeds limit of 4096 - not probed
+ Use 'probe -create -packed 115200 worklib.uvm_pkg::uvm_bits_to_string.str' or 'setenv SHM_PACKED_LIMIT 115200' to adjust limit.
+UVM_INFO @ 0: reporter [RNTST] Running test cfs_algn_test_reg_access...
+UVM_INFO cfs_algn_test_reg_access.sv(21) @ 100: uvm_test_top [DEBUG] This is end of test
+UVM_INFO /xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_objection.svh(1271) @ 100: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO /xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_server.svh(851) @ 100: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :    4
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[DEBUG]     1
+[RNTST]     1
+[TEST_DONE]     1
+[UVM/RELNOTES]     1
+
+Simulation complete via $finish(1) at time 100 NS + 59
+/xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:543     $finish;
+xcelium> exit
+TOOL:	xrun	25.03-s001: Exiting on Oct 24, 2026 at 17:26:38 EDT  (total: 00:00:07)

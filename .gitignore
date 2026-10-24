@@ -1,0 +1,14 @@
+# Simulator build/output
+xcelium.d/
+INCA_libs/
+work/
+*.vcd
+*.shm/
+*.trn
+*.dsn
+xrun.history
+cds.lib
+specman
+.simvision/
+waves.shm/
+result.zip

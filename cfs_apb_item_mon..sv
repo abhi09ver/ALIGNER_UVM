@@ -1,0 +1,1 @@
+// Extended class of apb sequence item 
